@@ -1,0 +1,12 @@
+.navList {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    list-style: none;
+    padding: 2rem;
+    padding-inline-start: 0;
+}
+
+.navList li {
+    color: blue;
+}
