@@ -1,0 +1,54 @@
+/* ****************** */
+/* Staff Hero Section */
+/* ****************** */
+
+.staffSection {
+    background-color: black;
+    color: white;
+}
+
+.staffSectionContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-block-start: 60px;
+    padding-block-end: 400px;
+}
+
+.textContainer {
+    width: 50%;
+}
+
+.textContainer h1 {
+    font-size: 3.875rem;
+    font-weight: 600;
+}
+
+.textContainer p {
+    font-size: 1.275rem;
+}
+
+.staffSectionLinksContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-inline-end: 70px;
+}
+
+.staffSectionLinksContainer a {
+    color: var(--color-blue-light);
+    font-size: 1.275rem;
+    font-weight: 650;
+}
+
+/* ************************ */
+/* Staff Hero Image Section */
+/* ************************ */
+
+.heroImageSectionContainer div {
+    position: relative;
+    height: 787px;
+}
+
+.heroImageSectionContainer img {
+    margin-block-start: -320px;
+}

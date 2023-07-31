@@ -1,7 +1,8 @@
+import Image from "next/image";
 import styles from "./Header.module.css";
 import Link from "next/link";
 
-const navLinks = [
+const navLinksLeft = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
   { href: "/pricing", label: "Pricing" },
@@ -9,12 +10,31 @@ const navLinks = [
   { href: "/about", label: "About" },
 ];
 
+const navLinksRight = [
+  { href: "/sign-in", label: "Sign In" },
+  { href: "/shop", label: "Shop" },
+  { href: "/cart", label: "", icon: "TODO" },
+];
+
 export default function Header() {
   return (
-    <header>
-      <nav>
+    <header className={`container ${styles.header}`}>
+      <Link href="/">
+        <Image src="./shikaku-logo.svg" alt="Shikaku Logo" width={110} height={32} />
+      </Link>
+
+      <nav className={styles.nav}>
         <ul className={styles.navList}>
-          {navLinks.map(({ href, label }) => (
+          {navLinksLeft.map(({ href, label }) => (
+            <li key={href}>
+              <Link href={href}>{label}</Link>
+            </li>
+          ))}
+        </ul>
+
+        <ul className={styles.navList}>
+          {navLinksRight.map(({ href, label, icon }) => (
+            !icon &&
             <li key={href}>
               <Link href={href}>{label}</Link>
             </li>

@@ -1,12 +1,47 @@
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-block-end: 1px solid #d9d9d9;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 15px;
+    width: 100%;
+}
+
 .navList {
     display: flex;
-    justify-content: center;
-    gap: 2.5rem;
+    gap: 10px;
     list-style: none;
-    padding: 2rem;
     padding-inline-start: 0;
 }
 
-.navList li {
-    color: blue;
+.navList li a {
+    display: block;
+    position: relative;
+    color: black;
+    font-weight: 500;
+    padding: 11px 10px 9px;
+}
+
+.navList li a::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    border-radius: 5px;
+    background-color: rgba(26, 26, 26, 0.1);
+    opacity: 0;
+    transform: scale(0);
+}
+
+.navList li a:hover::before {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 100ms cubic-bezier(0.4, 0, 0.2, 1), transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
 }
