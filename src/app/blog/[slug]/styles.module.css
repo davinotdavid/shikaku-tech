@@ -1,0 +1,26 @@
+.section {
+  padding-block: 16px;
+}
+
+.imageContainer {
+  padding-block-end: 24px;
+}
+
+.section img {
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.textContainer {
+  max-width: 75ch;
+  margin: 0 auto;
+  line-height: 1.725rem;
+}
+
+.textContainer h1 {
+  margin-bottom: 16px;
+}
+
+.textContainer p {
+  margin-bottom: 16px;
+}
