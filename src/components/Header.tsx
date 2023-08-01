@@ -19,27 +19,44 @@ const navLinksRight = [
 export default function Header() {
   return (
     <header className={`container ${styles.header}`}>
-      <Link href="/">
-        <Image src="./shikaku-logo.svg" alt="Shikaku Logo" width={110} height={32} />
+      <Link href="/" style={{ marginTop: "1px" }}>
+        <Image
+          src="./shikaku-logo.svg"
+          alt="Shikaku Logo"
+          width={110}
+          height={32}
+        />
       </Link>
 
       <nav className={styles.nav}>
-        <ul className={styles.navList}>
-          {navLinksLeft.map(({ href, label }) => (
-            <li key={href}>
-              <Link href={href}>{label}</Link>
-            </li>
-          ))}
-        </ul>
+        {/* Mobile navigation */}
+        <div className={styles.navMobile}>
+          <span />
+          <span />
+          <span />
+        </div>
 
-        <ul className={styles.navList}>
-          {navLinksRight.map(({ href, label, icon }) => (
-            !icon &&
-            <li key={href}>
-              <Link href={href}>{label}</Link>
-            </li>
-          ))}
-        </ul>
+        {/* Desktop navigation */}
+        <div className={styles.navDesktop}>
+          <ul className={styles.navList}>
+            {navLinksLeft.map(({ href, label }) => (
+              <li key={href}>
+                <Link href={href}>{label}</Link>
+              </li>
+            ))}
+          </ul>
+
+          <ul className={styles.navList}>
+            {navLinksRight.map(
+              ({ href, label, icon }) =>
+                !icon && (
+                  <li key={href}>
+                    <Link href={href}>{label}</Link>
+                  </li>
+                )
+            )}
+          </ul>
+        </div>
       </nav>
     </header>
   );

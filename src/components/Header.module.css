@@ -3,13 +3,45 @@
     align-items: center;
     gap: 20px;
     border-block-end: 1px solid #d9d9d9;
+    padding: 15px;
 }
 
-.nav {
+.nav, .navDesktop {
     display: flex;
     justify-content: space-between;
-    padding-block: 15px;
     width: 100%;
+}
+
+.navMobile {
+    display: none;
+    width: 100%;
+}
+
+.navMobile span {
+    width: 16px;
+    border: 1px solid black;
+}
+
+@media (max-width: 890px) {
+    .header {
+        justify-content: space-between;
+    }
+
+    .nav {
+        width: inherit;
+    }
+
+    .navDesktop {
+        display: none;
+    }
+
+    .navMobile {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+        padding: 10px;
+    }
 }
 
 .navList {

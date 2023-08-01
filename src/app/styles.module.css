@@ -52,3 +52,19 @@
 .heroImageSectionContainer img {
     margin-block-start: -320px;
 }
+
+@media (max-width: 890px) {
+    .textContainer {
+        width: 100%;
+        margin-bottom: 32px;
+    }
+
+    .staffSectionContainer {
+        padding-block-start: 24px;
+        flex-direction: column;
+    }
+
+    .heroImageSectionContainer div {
+        height: 400px;
+    }
+}
