@@ -18,6 +18,8 @@
 }
 
 .textContainer h1 {
+  font-size: 2rem;
+  line-height: 3rem;
   margin-bottom: 16px;
 }
 

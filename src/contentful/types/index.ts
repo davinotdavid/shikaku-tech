@@ -8,3 +8,8 @@ export type {
   TypeBlogPostFields,
   TypeBlogPostSkeleton,
 } from "./TypeBlogPost";
+export type {
+  TypeHeroSection,
+  TypeHeroSectionFields,
+  TypeHeroSectionSkeleton,
+} from "./TypeHeroSection";
