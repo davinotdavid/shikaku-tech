@@ -1,34 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# :white_square_button: ~~Square~~ Shikaku Tech repo! :white_square_button:
 
-## Getting Started
+This repo is a MVP / prototype (_with a whole lot of assumptions_) of [Square's Staff website](https://squareup.com/us/en/staff?country_redirection=true). The goal is to showcase the connection between a Next JS 13.x app (using the app router), type safe models, and Contentful as a CMS.
 
-First, run the development server:
+Currently live at https://shikaku-tech.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Tech stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next JS 13, using the shiny new app router
+- Contentful as CMS
+- TypeScript with a handy script to generate types from Contentful
+- CSS Modules for (uh) CSS
+- Vercel for deployments
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Have a Contentful account setup with some content models and some content setup
 
-## Learn More
+## How to run it locally
 
-To learn more about Next.js, take a look at the following resources:
+- Create a `.env.local` that resembles the `.env.example` except with the actual values of the API keys from Contentful (created under Settings -> API Key). The `CONTENTFUL_PREVIEW_SECRET` key can be whatever you like and will only be used if you want to setup preview URLs.
+- Run `npm i` to install all dependencies
+- After having setup Content Models and Contents in Contentful, run `npm run types:contentful` to generate TypeScript types (those will be created at `/src/contentful/types`)
+- Adjust the helper functions to fetch Contentful data based off your own Content Models (e.g. `blogPosts.ts` and `heroSection.ts`)
+- Finally, run `npm run dev` and visit `localhost:3000`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## (Optional) Deployment: How to connect Contentful webhook with Vercel for auto-deployments
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- In your project's Vercel page, go to Settings -> Git -> Deploy Hooks
+- Create a new deploy hook and name it anything you'd like
+- Copy the URL that has been generated
+- In your Contentful space, go to Settings -> Webhooks
+- Create a new webhook and paste Vercel's Deploy Hook URL into the URL field
 
-## Deploy on Vercel
+## (Optional) Deployment: Connecting preview URLs with draftMode from Next JS
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- In your Contentful space, go to Settings -> Content Preview
+- Create a Preview Platform and link it with the desired Content Models
+- In the Preview URL field, add the following URL:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`https://YOUR_DEPLOYED_APP_URL/api/draft?previewSecret=CONTENTFUL_PREVIEW_SECRET&redirect=DESIRED_PATH_FOR_REDIRECT`
+
+For example, for the blog post preview of the deployed example of this repo it would be
+
+`https://shikaku-tech.vercel.app/api/draft?previewSecret=CONTENTFUL_PREVIEW_SECRET&redirect=/blog/{entry.fields.slug}`, where `CONTENTFUL_PREVIEW_SECRET` is the same as the value in you `.env.local`.
